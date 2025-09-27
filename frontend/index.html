@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>QuMail - Quantum Secure Email Client</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-light">
+
+  <!-- Login Container -->
+  <div id="login-container" class="container mt-5" style="max-width: 400px;">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title text-primary mb-4 text-center">QuMail Login</h2>
+        <div class="mb-3">
+          <input type="email" id="email" placeholder="Email" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <input type="password" id="password" placeholder="Password" class="form-control" />
+        </div>
+        <div class="d-grid mb-3">
+          <button id="login-btn" class="btn btn-primary">Login</button>
+        </div>
+        <div id="login-msg" class="text-center mb-3"></div>
+        <p class="text-center">
+          <a href="register.html" class="link-primary">Don't have an account? Register here</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App Container -->
+  <div id="app-container" style="display:none;" class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="text-primary">📧 QuMail - Quantum Secure Email</h2>
+      <button id="logout-btn" class="btn btn-danger">Logout</button>
+    </div>
+
+    <!-- Security Level Selection -->
+    <div class="d-flex align-items-center mb-4 gap-2">
+      <label for="security-level" class="form-label mb-0 fw-semibold me-2">Security Level:</label>
+      <select id="security-level" class="form-select w-auto">
+        <option value="1">🔒 Quantum Secure (OTP)</option>
+        <option value="2">🔐 Quantum-aided AES</option>
+        <option value="3">🛡️ Post Quantum (PQC)</option>
+        <option value="4" selected>📄 No Quantum Security</option>
+      </select>
+      <button id="generate-key-btn" class="btn btn-info">Generate Key</button>
+    </div>
+
+    <!-- Compose Email -->
+    <div id="compose-email" class="card mb-5 shadow-sm">
+      <div class="card-header fw-semibold">📝 Compose Email</div>
+      <div class="card-body">
+        <form id="compose-form" onsubmit="return false;">
+          <div class="mb-3">
+            <input type="email" id="to-email" placeholder="To" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <input type="text" id="subject" placeholder="Subject" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <textarea id="body" placeholder="Email body" rows="5" class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <input type="file" id="attachment" class="form-control" />
+          </div>
+          <div class="d-grid">
+            <button id="send-btn" class="btn btn-primary">Send Email</button>
+          </div>
+          <div id="send-msg" class="mt-2 text-center fw-semibold"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Inbox -->
+    <div id="inbox" class="card shadow-sm">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>📬 Inbox</span>
+        <button id="refresh-btn" class="btn btn-sm btn-outline-primary">🔄 Refresh</button>
+      </div>
+      <ul id="email-list" class="list-group list-group-flush mb-3"></ul>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

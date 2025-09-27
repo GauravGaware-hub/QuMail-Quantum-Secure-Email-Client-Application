@@ -1,0 +1,15 @@
+import requests
+
+url = "http://127.0.0.1:5000/api/keys"
+headers = {
+    "Authorization": "Bearer demo-token",
+    "Content-Type": "application/json"
+}
+payload = {
+    "user": "your_email@gmail.com",
+    "key_length": 32
+}
+
+response = requests.post(url, json=payload, headers=headers)
+print(response.status_code)
+print(response.json())
